@@ -1,0 +1,57 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Spurwing
+providerId: spurwing
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Scheduling
+- Appointments
+- Booking
+- Calendar
+- Availability
+- Plans
+description: >-
+  Spurwing markets its appointment scheduling API to marketplaces, SaaS, and
+  healthcare on a commercial, contact-sales basis (demo / trial account on
+  request) rather than a self-serve published per-tier price list. Public
+  per-month plan pricing was not available at the time of cataloging. Spurwing
+  joined Healthie; current commercial terms should be confirmed with the
+  provider.
+notes: >-
+  No public, self-serve pricing tiers were reconciled for this artifact. The
+  plan entry below is a placeholder reflecting the documented contact-sales /
+  demo model. Verify current pricing and packaging directly with Spurwing /
+  Healthie during reconciliation.
+sources:
+- https://www.spurwing.io/
+- https://docs.spurwing.io/
+- https://github.com/SpurwingIO/Appointment-Scheduling-API
+plans:
+- id: spurwing-commercial
+  name: Commercial (Contact Sales)
+  type: enterprise
+  description: >-
+    Commercial access to the Spurwing scheduling API via demo or trial
+    account and negotiated terms. Public per-month pricing not published.
+  entries:
+  - label: Commercial Agreement
+    name: commercial
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Appointment Scheduling API
+  - name: Multi-User Calendars
+  - name: Group Meetings
+  - name: Availability and Booking
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

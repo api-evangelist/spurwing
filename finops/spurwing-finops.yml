@@ -1,0 +1,83 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Spurwing
+providerId: spurwing
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Scheduling
+- Appointments
+- Booking
+- Calendar
+- Availability
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Spurwing scheduling API spend. Spurwing is sold commercially
+  (contact sales / demo) rather than via a published usage-metered price list,
+  so cost is primarily a negotiated subscription/contract rather than a
+  per-call meter. Likely cost drivers are appointment/booking volume and the
+  number of provider calendars (seats). Specific meters and rates are not
+  reconciled.
+notes: >-
+  Cost drivers below are inferred from the documented product model
+  (per-booking volume, per-provider calendars). Confirm actual billing
+  dimensions, currency, and invoicing with Spurwing / Healthie during
+  reconciliation.
+sources:
+- https://www.spurwing.io/
+- https://docs.spurwing.io/
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Spurwing
+serviceCategory: Scheduling and Calendar
+billingModel:
+  pricingCategory: Subscription
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+focusColumns:
+  ServiceName: Spurwing Scheduling API
+  ServiceCategory: Scheduling and Calendar
+  ProviderName: Spurwing
+  PublisherName: Spurwing
+  InvoiceIssuerName: Spurwing
+  BillingCurrency: USD
+  ChargeCategory: Purchase
+  PricingCategory: Subscription
+meters:
+- name: appointments_booked
+  description: Appointments / bookings created through the API; likely a primary commercial cost driver.
+  unit: appointments
+  aggregation: sum
+  dimensions:
+  - account
+  - provider
+- name: provider_calendars
+  description: Number of provider calendars (seats) managed on the account.
+  unit: calendars
+  aggregation: max
+  dimensions:
+  - account
+principles:
+- name: Visibility
+  description: Track booking volume and active provider calendars against the contracted plan.
+- name: Allocation
+  description: Map provider calendars and booking volume to internal teams / cost centers.
+- name: Optimization
+  description: Right-size the number of active provider calendars and consolidate appointment types to fit the negotiated plan.
+- name: Accountability
+  description: Assign an owner for the Spurwing contract and review booking volume monthly against the agreement.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,62 @@
+aid: spurwing
+name: Spurwing
+review:
+  question: Does Spurwing expose a documented public WebSocket API?
+  answer: false
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was created. Spurwing's documented surface is a
+    synchronous REST (HTTPS) API. No Server-Sent Events (SSE) or WebSocket
+    streaming transport is documented in the official client libraries
+    (Python, NodeJS, JavaScript, Java) or in the Appointment Scheduling API
+    guide, so there is no event-driven channel to model.
+findings:
+  summary: |
+    Spurwing does not publish a documented public WebSocket API. The Spurwing
+    scheduling platform exposes a synchronous REST API under
+    https://api.spurwing.io/api/v2. Public availability and booking operations
+    are scoped by a public Provider ID; private operations (list, group
+    appointment creation, cancellation) are authorized with a Bearer API key.
+    No realtime, bidirectional, or streaming WebSocket (ws:// or wss://)
+    endpoint is documented. Webhook-style event notifications are referenced
+    in integration guidance but specific event types and payloads are not
+    reconciled.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.spurwing.io/api/v2
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in Spurwing's API reference or client libraries as of the review date.
+  endpointsConfirmedRest:
+    - GET    https://api.spurwing.io/api/v2/appointment_types.json
+    - GET    https://api.spurwing.io/api/v2/bookings/days_available.json
+    - GET    https://api.spurwing.io/api/v2/bookings/slots_available.json
+    - POST   https://api.spurwing.io/api/v2/bookings/complete_booking.json
+    - GET    https://api.spurwing.io/api/v2/appointments
+    - POST   https://api.spurwing.io/api/v2/appointments
+    - DELETE https://api.spurwing.io/api/v2/appointments/{appointment_id}
+sources:
+  - url: https://docs.spurwing.io/
+    type: Documentation
+    note: Stoplight-hosted REST API reference and docs.
+  - url: https://github.com/SpurwingIO/Appointment-Scheduling-API
+    type: Documentation
+    note: Official scheduling API guide; describes REST API only.
+  - url: https://github.com/SpurwingIO/Spurwing-API-Python-Library
+    type: SDK
+    note: Official Python client; all calls are HTTPS REST to api.spurwing.io/api/v2 with Bearer API key and provider_id.
+  - url: https://github.com/SpurwingIO/Spurwing-API-NodeJS-Library
+    type: SDK
+    note: Official NodeJS client; confirms the same REST base URL and endpoints.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket or SSE protocol surface exists in Spurwing's documented API
+    or official client libraries. The catalog models the documented REST
+    surface only; no AsyncAPI artifact was authored.

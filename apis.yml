@@ -1,0 +1,120 @@
+aid: spurwing
+url: https://raw.githubusercontent.com/api-evangelist/spurwing/refs/heads/main/apis.yml
+name: Spurwing
+kind: company
+description: Spurwing is an enterprise-grade appointment scheduling, calendar, and
+  time-management API. Its REST API powers booking widgets, marketplaces, SaaS, and
+  healthcare scheduling with multi-user calendars, provider availability, group meetings,
+  time-zone handling, and client booking. Public read and booking operations are scoped
+  by a public Provider ID, while private operations use a Bearer API key. Spurwing
+  joined Healthie.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Scheduling
+- Appointments
+- Booking
+- Calendar
+- Availability
+created: '2026-06-21'
+modified: '2026-06-21'
+specificationVersion: '0.19'
+apis:
+- aid: spurwing:providers
+  name: Spurwing Providers API
+  tags:
+  - Providers
+  - Calendars
+  - Scheduling
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.spurwing.io/
+  baseURL: https://api.spurwing.io/api/v2
+  properties:
+  - url: https://docs.spurwing.io/
+    type: Documentation
+  - url: openapi/spurwing-openapi.yml
+    type: OpenAPI
+  description: Provider calendars are the core scheduling entity in Spurwing. Each
+    provider has a public Provider ID used to scope public availability and booking
+    requests, supporting multi-user calendars for teams and organizations.
+- aid: spurwing:availability
+  name: Spurwing Availability API
+  tags:
+  - Availability
+  - Slots
+  - Time Zones
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.spurwing.io/
+  baseURL: https://api.spurwing.io/api/v2
+  properties:
+  - url: https://docs.spurwing.io/
+    type: Documentation
+  - url: openapi/spurwing-openapi.yml
+    type: OpenAPI
+  description: Returns the days and bookable time slots a provider has open for a given
+    appointment type and date range, with time-zone and organization-level options.
+- aid: spurwing:appointments
+  name: Spurwing Appointments API
+  tags:
+  - Appointments
+  - Booking
+  - Group Meetings
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.spurwing.io/
+  baseURL: https://api.spurwing.io/api/v2
+  properties:
+  - url: https://docs.spurwing.io/
+    type: Documentation
+  - url: openapi/spurwing-openapi.yml
+    type: OpenAPI
+  description: Book client appointments, create group appointments, list an account's
+    appointments, and cancel appointments. Booking is public per Provider ID; listing,
+    group creation, and cancellation require a Bearer API key.
+- aid: spurwing:services
+  name: Spurwing Services API
+  tags:
+  - Services
+  - Appointment Types
+  - Catalog
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.spurwing.io/
+  baseURL: https://api.spurwing.io/api/v2
+  properties:
+  - url: https://docs.spurwing.io/
+    type: Documentation
+  - url: openapi/spurwing-openapi.yml
+    type: OpenAPI
+  description: Lists the appointment types (services) configured on a provider's calendar,
+    each defining a bookable service with its own duration and availability rules.
+- aid: spurwing:webhooks
+  name: Spurwing Webhooks API
+  tags:
+  - Webhooks
+  - Events
+  - Notifications
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.spurwing.io/
+  baseURL: https://api.spurwing.io/api/v2
+  properties:
+  - url: https://docs.spurwing.io/
+    type: Documentation
+  description: Spurwing references webhook-style event notifications for scheduling
+    events in its integration guidance. Specific webhook event types and payloads
+    are not reconciled in this artifact; verify against the official documentation.
+common:
+- type: GitHubOrganization
+  url: https://github.com/SpurwingIO
+- type: LinkedIn
+  url: https://www.linkedin.com/company/spurwingio
+- type: Website
+  url: https://www.spurwing.io/
+- type: Documentation
+  url: https://docs.spurwing.io/
+- type: Plans
+  url: plans/spurwing-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/spurwing-rate-limits.yml
+- type: FinOps
+  url: finops/spurwing-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

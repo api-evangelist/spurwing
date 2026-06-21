@@ -1,0 +1,156 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spurwing Appointment Scheduling API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{apiKey}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Services",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List appointment types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spurwing.io/api/v2/appointment_types.json",
+            "params": [
+              { "name": "provider_id", "value": "", "type": "query", "description": "The provider's public calendar identifier." },
+              { "name": "page_size", "value": "", "type": "query" },
+              { "name": "offset", "value": "", "type": "query" }
+            ]
+          },
+          "docs": "Lists the appointment types (services) configured on a provider's public calendar."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Availability",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List available days",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spurwing.io/api/v2/bookings/days_available.json",
+            "params": [
+              { "name": "provider_id", "value": "", "type": "query" },
+              { "name": "appointment_type_id", "value": "", "type": "query" },
+              { "name": "date_from_month", "value": "", "type": "query" },
+              { "name": "organization_level", "value": "", "type": "query" },
+              { "name": "timezone", "value": "", "type": "query" }
+            ]
+          },
+          "docs": "Returns the days a provider has availability for a given appointment type."
+        },
+        {
+          "info": {
+            "name": "List available slots",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spurwing.io/api/v2/bookings/slots_available.json",
+            "params": [
+              { "name": "provider_id", "value": "", "type": "query" },
+              { "name": "appointment_type_id", "value": "", "type": "query" },
+              { "name": "start_date", "value": "", "type": "query" },
+              { "name": "end_date", "value": "", "type": "query" },
+              { "name": "organization_level", "value": "", "type": "query" },
+              { "name": "timezone", "value": "", "type": "query" }
+            ]
+          },
+          "docs": "Returns bookable time slots for a provider and appointment type within a date range."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Appointments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Complete a booking",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.spurwing.io/api/v2/bookings/complete_booking.json",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Creates a booking for a client. Pass appointment_id to add an attendee to an existing group appointment."
+        },
+        {
+          "info": {
+            "name": "Create group appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.spurwing.io/api/v2/appointments",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Creates a group appointment. Requires a Bearer API key."
+        },
+        {
+          "info": {
+            "name": "List appointments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spurwing.io/api/v2/appointments",
+            "params": [
+              { "name": "page_size", "value": "1000", "type": "query" },
+              { "name": "offset", "value": "0", "type": "query" },
+              { "name": "appointment_category", "value": "", "type": "query" },
+              { "name": "load_attendees", "value": "", "type": "query" },
+              { "name": "load_providers", "value": "", "type": "query" },
+              { "name": "load_appointment_type", "value": "", "type": "query" }
+            ]
+          },
+          "docs": "Lists the authorized account's appointments. Requires a Bearer API key."
+        },
+        {
+          "info": {
+            "name": "Cancel an appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.spurwing.io/api/v2/appointments/:appointment_id",
+            "params": [
+              { "name": "appointment_id", "value": "", "type": "path", "description": "The ID of the appointment to cancel." }
+            ]
+          },
+          "docs": "Cancels and deletes an appointment by id. Requires a Bearer API key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
