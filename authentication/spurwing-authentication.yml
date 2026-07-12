@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/spurwing-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: Private API key issued on the Spurwing dashboard (API Info page), passed as an
+    Authorization Bearer token. Never expose the API key in front-end code.
+  sources:
+  - openapi/spurwing-openapi.yml
