@@ -101,6 +101,8 @@ apis:
     events in its integration guidance. Specific webhook event types and payloads
     are not reconciled in this artifact; verify against the official documentation.
 common:
+- type: AgenticAccess
+  url: agentic-access/spurwing-agentic-access.yml
 - type: DomainSecurity
   url: security/spurwing-domain-security.yml
 - type: Authentication
