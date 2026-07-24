@@ -1,0 +1,220 @@
+openapi: 3.0.1
+info:
+  title: Spurwing Appointment Scheduling Appointments API
+  description: Spurwing is an enterprise-grade appointment scheduling, calendar, and time-management API. The REST API exposes appointment types (services), provider availability (days and time slots), client booking, and appointment management (group appointments, listing, and cancellation). Public read/booking operations are scoped by a public Provider ID; private operations are authorized with a Bearer API key. Spurwing joined Healthie; documented endpoints below are drawn from Spurwing's official open-source client libraries (Python, NodeJS, JavaScript, Java).
+  termsOfService: https://www.spurwing.io/
+  contact:
+    name: Spurwing Support
+    email: support@spurwing.io
+  version: v2
+servers:
+- url: https://api.spurwing.io/api/v2
+security:
+- bearerAuth: []
+tags:
+- name: Appointments
+paths:
+  /bookings/complete_booking.json:
+    post:
+      operationId: completeBooking
+      tags:
+      - Appointments
+      summary: Complete a booking
+      description: Creates a booking for a client on behalf of that client for a given provider, appointment type, and time slot. Can also be used to add an attendee to an existing group appointment by passing appointment_id.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CompleteBookingRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookingResponse'
+  /appointments:
+    get:
+      operationId: listAppointments
+      tags:
+      - Appointments
+      summary: List appointments
+      description: Returns the authorized account's appointments with optional inclusion of attendees, providers, and appointment type details. Requires a Bearer API key.
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: page_size
+        in: query
+        required: true
+        schema:
+          type: integer
+      - name: offset
+        in: query
+        required: true
+        schema:
+          type: integer
+      - name: appointment_category
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: load_attendees
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: load_providers
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: load_appointment_type
+        in: query
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppointmentsList'
+    post:
+      operationId: createGroupAppointment
+      tags:
+      - Appointments
+      summary: Create a group appointment
+      description: Creates a group appointment for a provider and appointment type at a given datetime. Attendees are subsequently added via the complete booking endpoint using the returned appointment id. Requires a Bearer API key.
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CreateGroupAppointmentRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppointmentResponse'
+  /appointments/{appointment_id}:
+    delete:
+      operationId: deleteAppointment
+      tags:
+      - Appointments
+      summary: Cancel an appointment
+      description: Cancels and deletes an appointment by its identifier. Requires a Bearer API key.
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: appointment_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppointmentResponse'
+components:
+  schemas:
+    AppointmentResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            appointment:
+              $ref: '#/components/schemas/Appointment'
+        errors:
+          type: array
+          items:
+            type: object
+    AppointmentsList:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            appointments:
+              type: array
+              items:
+                $ref: '#/components/schemas/Appointment'
+            appointmentsCount:
+              type: integer
+    BookingResponse:
+      type: object
+      properties:
+        appointment:
+          $ref: '#/components/schemas/Appointment'
+    Appointment:
+      type: object
+      properties:
+        id:
+          type: string
+        provider_id:
+          type: string
+        appointment_type_id:
+          type: string
+        datetime:
+          type: string
+    CreateGroupAppointmentRequest:
+      type: object
+      required:
+      - provider_id
+      - appointment_type_id
+      - datetime
+      properties:
+        provider_id:
+          type: string
+        appointment_type_id:
+          type: string
+        datetime:
+          type: string
+          description: Date and time of the group appointment.
+    CompleteBookingRequest:
+      type: object
+      required:
+      - provider_id
+      - appointment_type_id
+      - email
+      - first_name
+      - last_name
+      properties:
+        provider_id:
+          type: string
+        appointment_type_id:
+          type: string
+        email:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        date:
+          type: string
+          description: The selected slot date/time.
+        timezone:
+          type: string
+        contact_type:
+          type: string
+        appointment_id:
+          type: string
+          description: Existing group appointment id to add this attendee to.
+        appointment_location_id:
+          type: string
+        video_chat_url:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Private API key issued on the Spurwing dashboard (API Info page), passed as an Authorization Bearer token. Never expose the API key in front-end code.

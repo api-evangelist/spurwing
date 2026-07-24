@@ -1,0 +1,67 @@
+openapi: 3.0.1
+info:
+  title: Spurwing Appointment Scheduling Appointments Services API
+  description: Spurwing is an enterprise-grade appointment scheduling, calendar, and time-management API. The REST API exposes appointment types (services), provider availability (days and time slots), client booking, and appointment management (group appointments, listing, and cancellation). Public read/booking operations are scoped by a public Provider ID; private operations are authorized with a Bearer API key. Spurwing joined Healthie; documented endpoints below are drawn from Spurwing's official open-source client libraries (Python, NodeJS, JavaScript, Java).
+  termsOfService: https://www.spurwing.io/
+  contact:
+    name: Spurwing Support
+    email: support@spurwing.io
+  version: v2
+servers:
+- url: https://api.spurwing.io/api/v2
+security:
+- bearerAuth: []
+tags:
+- name: Services
+paths:
+  /appointment_types.json:
+    get:
+      operationId: getAppointmentTypes
+      tags:
+      - Services
+      summary: List appointment types
+      description: Returns the appointment types (services) configured for a provider's public calendar. Each appointment type defines a bookable service with its own duration and availability rules.
+      parameters:
+      - name: provider_id
+        in: query
+        required: true
+        description: The provider's public calendar identifier.
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AppointmentType'
+components:
+  schemas:
+    AppointmentType:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Appointment type identifier.
+        name:
+          type: string
+        duration:
+          type: integer
+          description: Duration in minutes.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Private API key issued on the Spurwing dashboard (API Info page), passed as an Authorization Bearer token. Never expose the API key in front-end code.

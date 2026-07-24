@@ -1,0 +1,132 @@
+openapi: 3.0.1
+info:
+  title: Spurwing Appointment Scheduling Appointments Availability API
+  description: Spurwing is an enterprise-grade appointment scheduling, calendar, and time-management API. The REST API exposes appointment types (services), provider availability (days and time slots), client booking, and appointment management (group appointments, listing, and cancellation). Public read/booking operations are scoped by a public Provider ID; private operations are authorized with a Bearer API key. Spurwing joined Healthie; documented endpoints below are drawn from Spurwing's official open-source client libraries (Python, NodeJS, JavaScript, Java).
+  termsOfService: https://www.spurwing.io/
+  contact:
+    name: Spurwing Support
+    email: support@spurwing.io
+  version: v2
+servers:
+- url: https://api.spurwing.io/api/v2
+security:
+- bearerAuth: []
+tags:
+- name: Availability
+paths:
+  /bookings/days_available.json:
+    get:
+      operationId: getDaysAvailable
+      tags:
+      - Availability
+      summary: List available days
+      description: Returns the days on which a provider has availability for a given appointment type, starting from an optional month.
+      parameters:
+      - name: provider_id
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: appointment_type_id
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: date_from_month
+        in: query
+        required: false
+        description: Month from which to begin returning available days.
+        schema:
+          type: string
+      - name: organization_level
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: timezone
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DaysAvailable'
+  /bookings/slots_available.json:
+    get:
+      operationId: getSlotsAvailable
+      tags:
+      - Availability
+      summary: List available time slots
+      description: Returns bookable time slots for a provider and appointment type within a start/end date range.
+      parameters:
+      - name: provider_id
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: appointment_type_id
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: start_date
+        in: query
+        required: true
+        description: Start of the date range (e.g. YYYY/MM/DD).
+        schema:
+          type: string
+      - name: end_date
+        in: query
+        required: true
+        description: End of the date range (e.g. YYYY/MM/DD).
+        schema:
+          type: string
+      - name: organization_level
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: timezone
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SlotsAvailable'
+components:
+  schemas:
+    DaysAvailable:
+      type: object
+      properties:
+        days_available:
+          type: array
+          items:
+            type: string
+            description: A date on which the provider has availability.
+    Slot:
+      type: object
+      properties:
+        date:
+          type: string
+          description: The date/time of the bookable slot.
+    SlotsAvailable:
+      type: object
+      properties:
+        slots_available:
+          type: array
+          items:
+            $ref: '#/components/schemas/Slot'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Private API key issued on the Spurwing dashboard (API Info page), passed as an Authorization Bearer token. Never expose the API key in front-end code.
