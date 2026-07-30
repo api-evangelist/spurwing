@@ -8,7 +8,20 @@ description: Spurwing is an enterprise-grade appointment scheduling, calendar, a
   time-zone handling, and client booking. Public read and booking operations are scoped
   by a public Provider ID, while private operations use a Bearer API key. Spurwing
   joined Healthie.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/spurwing.png
 tags:
 - Scheduling
 - Appointments
@@ -19,72 +32,6 @@ created: '2026-06-21'
 modified: '2026-06-21'
 specificationVersion: '0.19'
 apis:
-- aid: spurwing:providers
-  name: Spurwing Providers API
-  tags:
-  - Providers
-  - Calendars
-  - Scheduling
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.spurwing.io/
-  baseURL: https://api.spurwing.io/api/v2
-  properties:
-  - url: https://docs.spurwing.io/
-    type: Documentation
-  - url: openapi/spurwing-openapi.yml
-    type: OpenAPI
-  description: Provider calendars are the core scheduling entity in Spurwing. Each
-    provider has a public Provider ID used to scope public availability and booking
-    requests, supporting multi-user calendars for teams and organizations.
-- aid: spurwing:availability
-  name: Spurwing Availability API
-  tags:
-  - Availability
-  - Slots
-  - Time Zones
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.spurwing.io/
-  baseURL: https://api.spurwing.io/api/v2
-  properties:
-  - url: https://docs.spurwing.io/
-    type: Documentation
-  - url: openapi/spurwing-openapi.yml
-    type: OpenAPI
-  description: Returns the days and bookable time slots a provider has open for a given
-    appointment type and date range, with time-zone and organization-level options.
-- aid: spurwing:appointments
-  name: Spurwing Appointments API
-  tags:
-  - Appointments
-  - Booking
-  - Group Meetings
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.spurwing.io/
-  baseURL: https://api.spurwing.io/api/v2
-  properties:
-  - url: https://docs.spurwing.io/
-    type: Documentation
-  - url: openapi/spurwing-openapi.yml
-    type: OpenAPI
-  description: Book client appointments, create group appointments, list an account's
-    appointments, and cancel appointments. Booking is public per Provider ID; listing,
-    group creation, and cancellation require a Bearer API key.
-- aid: spurwing:services
-  name: Spurwing Services API
-  tags:
-  - Services
-  - Appointment Types
-  - Catalog
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.spurwing.io/
-  baseURL: https://api.spurwing.io/api/v2
-  properties:
-  - url: https://docs.spurwing.io/
-    type: Documentation
-  - url: openapi/spurwing-openapi.yml
-    type: OpenAPI
-  description: Lists the appointment types (services) configured on a provider's calendar,
-    each defining a bookable service with its own duration and availability rules.
 - aid: spurwing:webhooks
   name: Spurwing Webhooks API
   tags:
@@ -97,9 +44,46 @@ apis:
   properties:
   - url: https://docs.spurwing.io/
     type: Documentation
-  description: Spurwing references webhook-style event notifications for scheduling
-    events in its integration guidance. Specific webhook event types and payloads
-    are not reconciled in this artifact; verify against the official documentation.
+  description: >-
+    Spurwing references webhook-style event notifications for scheduling events in its integration guidance.
+    Specific webhook event types and payloads are not reconciled in this artifact; verify against the
+    official documentation.
+- aid: spurwing:spurwing-appointments-api
+  name: Spurwing Appointments API
+  description: The Appointments API from Spurwing — 3 operation(s) for appointments.
+  humanURL: https://docs.spurwing.io/
+  baseURL: https://api.spurwing.io/api/v2
+  tags:
+  - Appointments
+  properties:
+  - type: OpenAPI
+    url: openapi/spurwing-appointments-api-openapi.yml
+  - type: Documentation
+    url: https://docs.spurwing.io/
+- aid: spurwing:spurwing-availability-api
+  name: Spurwing Availability API
+  description: The Availability API from Spurwing — 2 operation(s) for availability.
+  humanURL: https://docs.spurwing.io/
+  baseURL: https://api.spurwing.io/api/v2
+  tags:
+  - Availability
+  properties:
+  - type: OpenAPI
+    url: openapi/spurwing-availability-api-openapi.yml
+  - type: Documentation
+    url: https://docs.spurwing.io/
+- aid: spurwing:spurwing-services-api
+  name: Spurwing Services API
+  description: The Services API from Spurwing — 1 operation(s) for services.
+  humanURL: https://docs.spurwing.io/
+  baseURL: https://api.spurwing.io/api/v2
+  tags:
+  - Services
+  properties:
+  - type: OpenAPI
+    url: openapi/spurwing-services-api-openapi.yml
+  - type: Documentation
+    url: https://docs.spurwing.io/
 common:
 - type: AgenticAccess
   url: agentic-access/spurwing-agentic-access.yml
