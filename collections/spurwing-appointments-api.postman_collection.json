@@ -1,0 +1,671 @@
+{
+  "item": [
+    {
+      "id": "071780af-e2e9-43a1-991c-72fdeb99f0b5",
+      "name": "Appointments",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a6b977d1-0eb5-49c8-8e23-bc0f0af03e88",
+          "name": "Complete a booking",
+          "request": {
+            "name": "Complete a booking",
+            "description": {
+              "content": "Creates a booking for a client on behalf of that client for a given provider, appointment type, and time slot. Can also be used to add an attendee to an existing group appointment by passing appointment_id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bookings",
+                "complete_booking.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "provider_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "appointment_type_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "first_name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "last_name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<string>",
+                  "description": "The selected slot date/time."
+                },
+                {
+                  "disabled": false,
+                  "key": "timezone",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "contact_type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "appointment_id",
+                  "value": "<string>",
+                  "description": "Existing group appointment id to add this attendee to."
+                },
+                {
+                  "disabled": false,
+                  "key": "appointment_location_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "video_chat_url",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "42d00a4d-b9a2-4e1b-af24-d5cc9b55e7f4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bookings",
+                    "complete_booking.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "provider_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "appointment_type_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "first_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "last_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The selected slot date/time.",
+                        "type": "text/plain"
+                      },
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "contact_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Existing group appointment id to add this attendee to.",
+                        "type": "text/plain"
+                      },
+                      "key": "appointment_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "appointment_location_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "video_chat_url",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"appointment\": {\n    \"id\": \"string\",\n    \"provider_id\": \"string\",\n    \"appointment_type_id\": \"string\",\n    \"datetime\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4c8b874e-f7d4-4f7a-948f-436febb6c961",
+          "name": "List appointments",
+          "request": {
+            "name": "List appointments",
+            "description": {
+              "content": "Returns the authorized account's appointments with optional inclusion of attendees, providers, and appointment type details. Requires a Bearer API key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "appointments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "appointment_category",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "load_attendees",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "load_providers",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "load_appointment_type",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4f1eda9d-e785-45cf-9059-5ffd6dbc9aac",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appointments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "appointment_category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "load_attendees",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "load_providers",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "load_appointment_type",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"appointments\": [\n      {\n        \"id\": \"string\",\n        \"provider_id\": \"string\",\n        \"appointment_type_id\": \"string\",\n        \"datetime\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"provider_id\": \"string\",\n        \"appointment_type_id\": \"string\",\n        \"datetime\": \"string\"\n      }\n    ],\n    \"appointmentsCount\": 9366\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4129e1ac-3498-451d-bf9f-8ca6eeeb4388",
+          "name": "Create a group appointment",
+          "request": {
+            "name": "Create a group appointment",
+            "description": {
+              "content": "Creates a group appointment for a provider and appointment type at a given datetime. Attendees are subsequently added via the complete booking endpoint using the returned appointment id. Requires a Bearer API key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "appointments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "provider_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "appointment_type_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "datetime",
+                  "value": "<string>",
+                  "description": "(Required) Date and time of the group appointment."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a55204a8-ea67-4113-b516-9d8002023376",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appointments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "provider_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "appointment_type_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Date and time of the group appointment.",
+                        "type": "text/plain"
+                      },
+                      "key": "datetime",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"appointment\": {\n      \"id\": \"string\",\n      \"provider_id\": \"string\",\n      \"appointment_type_id\": \"string\",\n      \"datetime\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "49963688-b4de-41df-b8b1-ead9a81ea999",
+          "name": "Cancel an appointment",
+          "request": {
+            "name": "Cancel an appointment",
+            "description": {
+              "content": "Cancels and deletes an appointment by its identifier. Requires a Bearer API key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "appointments",
+                ":appointment_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appointment_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b02a4b6a-cc41-48fe-b1b9-356a9eaa9e9f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appointments",
+                    ":appointment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointment_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"appointment\": {\n      \"id\": \"string\",\n      \"provider_id\": \"string\",\n      \"appointment_type_id\": \"string\",\n      \"datetime\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.spurwing.io/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "14423eba-6b18-44a6-b8cb-17c34004616b",
+    "name": "Spurwing Appointment Scheduling Appointments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Spurwing is an enterprise-grade appointment scheduling, calendar, and time-management API. The REST API exposes appointment types (services), provider availability (days and time slots), client booking, and appointment management (group appointments, listing, and cancellation). Public read/booking operations are scoped by a public Provider ID; private operations are authorized with a Bearer API key. Spurwing joined Healthie; documented endpoints below are drawn from Spurwing's official open-source client libraries (Python, NodeJS, JavaScript, Java).\n\nContact Support:\n Name: Spurwing Support\n Email: support@spurwing.io",
+      "type": "text/plain"
+    }
+  }
+}

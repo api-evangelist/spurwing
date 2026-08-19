@@ -1,0 +1,53 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spurwing Appointment Scheduling Appointments Services API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Services",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List appointment types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spurwing.io/api/v2/appointment_types.json",
+            "params": [
+              {
+                "name": "provider_id",
+                "value": "",
+                "type": "query",
+                "description": "The provider's public calendar identifier."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the appointment types (services) configured for a provider's public calendar. Each appointment type defines a bookable service with its own duration and availability rules."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

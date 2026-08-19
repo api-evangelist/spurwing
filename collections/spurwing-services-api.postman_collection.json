@@ -1,0 +1,149 @@
+{
+  "item": [
+    {
+      "id": "07d1cd4a-fd31-46ec-beef-9dd354622bb3",
+      "name": "Services",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f85ad34d-082d-4da0-8926-d178698866c6",
+          "name": "List appointment types",
+          "request": {
+            "name": "List appointment types",
+            "description": {
+              "content": "Returns the appointment types (services) configured for a provider's public calendar. Each appointment type defines a bookable service with its own duration and availability rules.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "appointment_types.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "provider_id",
+                  "value": "<string>",
+                  "description": "(Required) The provider's public calendar identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee82614e-532a-49b5-9c15-3601e2c6cee6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appointment_types.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"duration\": 4543\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"duration\": 6358\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.spurwing.io/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3c50c7e5-d096-4f21-8908-a57c16e05c20",
+    "name": "Spurwing Appointment Scheduling Appointments Services API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Spurwing is an enterprise-grade appointment scheduling, calendar, and time-management API. The REST API exposes appointment types (services), provider availability (days and time slots), client booking, and appointment management (group appointments, listing, and cancellation). Public read/booking operations are scoped by a public Provider ID; private operations are authorized with a Bearer API key. Spurwing joined Healthie; documented endpoints below are drawn from Spurwing's official open-source client libraries (Python, NodeJS, JavaScript, Java).\n\nContact Support:\n Name: Spurwing Support\n Email: support@spurwing.io",
+      "type": "text/plain"
+    }
+  }
+}

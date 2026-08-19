@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spurwing Appointment Scheduling Appointments Availability API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Availability",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List available days",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spurwing.io/api/v2/bookings/days_available.json",
+            "params": [
+              {
+                "name": "provider_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "appointment_type_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_from_month",
+                "value": "",
+                "type": "query",
+                "description": "Month from which to begin returning available days."
+              },
+              {
+                "name": "organization_level",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the days on which a provider has availability for a given appointment type, starting from an optional month."
+        },
+        {
+          "info": {
+            "name": "List available time slots",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spurwing.io/api/v2/bookings/slots_available.json",
+            "params": [
+              {
+                "name": "provider_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "appointment_type_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Start of the date range (e.g. YYYY/MM/DD)."
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "End of the date range (e.g. YYYY/MM/DD)."
+              },
+              {
+                "name": "organization_level",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns bookable time slots for a provider and appointment type within a start/end date range."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

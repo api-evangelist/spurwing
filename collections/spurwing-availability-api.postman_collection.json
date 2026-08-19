@@ -1,0 +1,311 @@
+{
+  "item": [
+    {
+      "id": "0d9bd2e4-e5e1-429f-9739-b4dd3395d5e1",
+      "name": "Availability",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "02734092-9e6e-4bdc-a069-d41031435fcc",
+          "name": "List available days",
+          "request": {
+            "name": "List available days",
+            "description": {
+              "content": "Returns the days on which a provider has availability for a given appointment type, starting from an optional month.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bookings",
+                "days_available.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "provider_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "appointment_type_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "date_from_month",
+                  "value": "<string>",
+                  "description": "Month from which to begin returning available days."
+                },
+                {
+                  "disabled": false,
+                  "key": "organization_level",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "timezone",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2b751276-1935-48bf-9e96-fc7de0cd53c9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bookings",
+                    "days_available.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appointment_type_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_from_month",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_level",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"days_available\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "903d564b-2e36-4beb-b91d-8e193f2ea47d",
+          "name": "List available time slots",
+          "request": {
+            "name": "List available time slots",
+            "description": {
+              "content": "Returns bookable time slots for a provider and appointment type within a start/end date range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bookings",
+                "slots_available.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "provider_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "appointment_type_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<string>",
+                  "description": "(Required) Start of the date range (e.g. YYYY/MM/DD)."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<string>",
+                  "description": "(Required) End of the date range (e.g. YYYY/MM/DD)."
+                },
+                {
+                  "disabled": false,
+                  "key": "organization_level",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "timezone",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "990ea32f-b937-4a6a-891c-e039e2c23f8a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bookings",
+                    "slots_available.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appointment_type_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_level",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"slots_available\": [\n    {\n      \"date\": \"string\"\n    },\n    {\n      \"date\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.spurwing.io/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9730c307-abda-426d-bd64-b9b51b930270",
+    "name": "Spurwing Appointment Scheduling Appointments Availability API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Spurwing is an enterprise-grade appointment scheduling, calendar, and time-management API. The REST API exposes appointment types (services), provider availability (days and time slots), client booking, and appointment management (group appointments, listing, and cancellation). Public read/booking operations are scoped by a public Provider ID; private operations are authorized with a Bearer API key. Spurwing joined Healthie; documented endpoints below are drawn from Spurwing's official open-source client libraries (Python, NodeJS, JavaScript, Java).\n\nContact Support:\n Name: Spurwing Support\n Email: support@spurwing.io",
+      "type": "text/plain"
+    }
+  }
+}

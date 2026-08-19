@@ -1,0 +1,127 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spurwing Appointment Scheduling Appointments API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Appointments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Complete a booking",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.spurwing.io/api/v2/bookings/complete_booking.json",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Creates a booking for a client on behalf of that client for a given provider, appointment type, and time slot. Can also be used to add an attendee to an existing group appointment by passing appointment_id."
+        },
+        {
+          "info": {
+            "name": "List appointments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spurwing.io/api/v2/appointments",
+            "params": [
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "appointment_category",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "load_attendees",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "load_providers",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "load_appointment_type",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns the authorized account's appointments with optional inclusion of attendees, providers, and appointment type details. Requires a Bearer API key."
+        },
+        {
+          "info": {
+            "name": "Create a group appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.spurwing.io/api/v2/appointments",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a group appointment for a provider and appointment type at a given datetime. Attendees are subsequently added via the complete booking endpoint using the returned appointment id. Requires a Bearer API key."
+        },
+        {
+          "info": {
+            "name": "Cancel an appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.spurwing.io/api/v2/appointments/:appointment_id",
+            "params": [
+              {
+                "name": "appointment_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Cancels and deletes an appointment by its identifier. Requires a Bearer API key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
