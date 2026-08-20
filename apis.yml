@@ -35,6 +35,10 @@ apis:
 - aid: spurwing:webhooks
   name: Spurwing Webhooks API
   tags:
+  - Webhook
+  - Event
+  - Notification
+  tags_raw:
   - Webhooks
   - Events
   - Notifications
