@@ -8,6 +8,18 @@ description: Spurwing is an enterprise-grade appointment scheduling, calendar, a
   time-zone handling, and client booking. Public read and booking operations are scoped
   by a public Provider ID, while private operations use a Bearer API key. Spurwing
   joined Healthie.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
