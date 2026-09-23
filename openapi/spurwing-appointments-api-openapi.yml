@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Spurwing Appointment Scheduling Appointments API
-  description: Spurwing is an enterprise-grade appointment scheduling, calendar, and time-management API. The REST API exposes appointment types (services), provider availability (days and time slots), client booking, and appointment management (group appointments, listing, and cancellation). Public read/booking operations are scoped by a public Provider ID; private operations are authorized with a Bearer API key. Spurwing joined Healthie; documented endpoints below are drawn from Spurwing's official open-source client libraries (Python, NodeJS, JavaScript, Java).
+  description: Spurwing is an enterprise-grade appointment scheduling, calendar, and time-management API.
   termsOfService: https://www.spurwing.io/
   contact:
     name: Spurwing Support
@@ -126,60 +126,6 @@ paths:
                 $ref: '#/components/schemas/AppointmentResponse'
 components:
   schemas:
-    AppointmentResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            appointment:
-              $ref: '#/components/schemas/Appointment'
-        errors:
-          type: array
-          items:
-            type: object
-    AppointmentsList:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            appointments:
-              type: array
-              items:
-                $ref: '#/components/schemas/Appointment'
-            appointmentsCount:
-              type: integer
-    BookingResponse:
-      type: object
-      properties:
-        appointment:
-          $ref: '#/components/schemas/Appointment'
-    Appointment:
-      type: object
-      properties:
-        id:
-          type: string
-        provider_id:
-          type: string
-        appointment_type_id:
-          type: string
-        datetime:
-          type: string
-    CreateGroupAppointmentRequest:
-      type: object
-      required:
-      - provider_id
-      - appointment_type_id
-      - datetime
-      properties:
-        provider_id:
-          type: string
-        appointment_type_id:
-          type: string
-        datetime:
-          type: string
-          description: Date and time of the group appointment.
     CompleteBookingRequest:
       type: object
       required:
@@ -213,6 +159,60 @@ components:
           type: string
         video_chat_url:
           type: string
+    BookingResponse:
+      type: object
+      properties:
+        appointment:
+          $ref: '#/components/schemas/Appointment'
+    AppointmentResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            appointment:
+              $ref: '#/components/schemas/Appointment'
+        errors:
+          type: array
+          items:
+            type: object
+    Appointment:
+      type: object
+      properties:
+        id:
+          type: string
+        provider_id:
+          type: string
+        appointment_type_id:
+          type: string
+        datetime:
+          type: string
+    AppointmentsList:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            appointments:
+              type: array
+              items:
+                $ref: '#/components/schemas/Appointment'
+            appointmentsCount:
+              type: integer
+    CreateGroupAppointmentRequest:
+      type: object
+      required:
+      - provider_id
+      - appointment_type_id
+      - datetime
+      properties:
+        provider_id:
+          type: string
+        appointment_type_id:
+          type: string
+        datetime:
+          type: string
+          description: Date and time of the group appointment.
   securitySchemes:
     bearerAuth:
       type: http

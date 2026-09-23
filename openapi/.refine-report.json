@@ -1,9 +1,7 @@
 {
   "provider": "spurwing",
   "sources": [
-    "spurwing-appointments-api-openapi.yml",
-    "spurwing-availability-api-openapi.yml",
-    "spurwing-services-api-openapi.yml"
+    "_original/spurwing-openapi.yml"
   ],
   "outputs": [
     "spurwing-appointments-api-openapi.yml",
@@ -13,6 +11,17 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "spurwing-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "spurwing-openapi.yml: declared missing tag: Appointments",
+    "spurwing-openapi.yml: declared missing tag: Availability",
+    "spurwing-openapi.yml: declared missing tag: Services",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "spurwing-appointments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spurwing-availability-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spurwing-services-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

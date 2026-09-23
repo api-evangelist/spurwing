@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Spurwing Appointment Scheduling Appointments Services API
-  description: Spurwing is an enterprise-grade appointment scheduling, calendar, and time-management API. The REST API exposes appointment types (services), provider availability (days and time slots), client booking, and appointment management (group appointments, listing, and cancellation). Public read/booking operations are scoped by a public Provider ID; private operations are authorized with a Bearer API key. Spurwing joined Healthie; documented endpoints below are drawn from Spurwing's official open-source client libraries (Python, NodeJS, JavaScript, Java).
+  title: Spurwing Appointment Scheduling Services API
+  description: Spurwing is an enterprise-grade appointment scheduling, calendar, and time-management API.
   termsOfService: https://www.spurwing.io/
   contact:
     name: Spurwing Support
