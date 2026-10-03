@@ -126,11 +126,60 @@ paths:
                 $ref: '#/components/schemas/AppointmentResponse'
 components:
   schemas:
+    CreateGroupAppointmentRequest:
+      type: object
+      required:
+      - provider_id
+      - appointment_type_id
+      - datetime
+      properties:
+        provider_id:
+          type: string
+        appointment_type_id:
+          type: string
+        datetime:
+          type: string
+          description: Date and time of the group appointment.
+    AppointmentsList:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            appointments:
+              type: array
+              items:
+                $ref: '#/components/schemas/Appointment'
+            appointmentsCount:
+              type: integer
     BookingResponse:
       type: object
       properties:
         appointment:
           $ref: '#/components/schemas/Appointment'
+    AppointmentResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            appointment:
+              $ref: '#/components/schemas/Appointment'
+        errors:
+          type: array
+          items:
+            type: object
+    Appointment:
+      type: object
+      properties:
+        id:
+          type: string
+        provider_id:
+          type: string
+        appointment_type_id:
+          type: string
+        datetime:
+          type: string
     CompleteBookingRequest:
       type: object
       required:
@@ -164,55 +213,6 @@ components:
           type: string
         video_chat_url:
           type: string
-    Appointment:
-      type: object
-      properties:
-        id:
-          type: string
-        provider_id:
-          type: string
-        appointment_type_id:
-          type: string
-        datetime:
-          type: string
-    AppointmentsList:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            appointments:
-              type: array
-              items:
-                $ref: '#/components/schemas/Appointment'
-            appointmentsCount:
-              type: integer
-    AppointmentResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            appointment:
-              $ref: '#/components/schemas/Appointment'
-        errors:
-          type: array
-          items:
-            type: object
-    CreateGroupAppointmentRequest:
-      type: object
-      required:
-      - provider_id
-      - appointment_type_id
-      - datetime
-      properties:
-        provider_id:
-          type: string
-        appointment_type_id:
-          type: string
-        datetime:
-          type: string
-          description: Date and time of the group appointment.
   securitySchemes:
     bearerAuth:
       type: http

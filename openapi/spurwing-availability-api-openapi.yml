@@ -110,13 +110,6 @@ components:
         date:
           type: string
           description: The date/time of the bookable slot.
-    SlotsAvailable:
-      type: object
-      properties:
-        slots_available:
-          type: array
-          items:
-            $ref: '#/components/schemas/Slot'
     DaysAvailable:
       type: object
       properties:
@@ -125,6 +118,13 @@ components:
           items:
             type: string
             description: A date on which the provider has availability.
+    SlotsAvailable:
+      type: object
+      properties:
+        slots_available:
+          type: array
+          items:
+            $ref: '#/components/schemas/Slot'
   securitySchemes:
     bearerAuth:
       type: http
