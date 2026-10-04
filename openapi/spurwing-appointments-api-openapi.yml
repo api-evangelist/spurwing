@@ -126,6 +126,18 @@ paths:
                 $ref: '#/components/schemas/AppointmentResponse'
 components:
   schemas:
+    AppointmentResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            appointment:
+              $ref: '#/components/schemas/Appointment'
+        errors:
+          type: array
+          items:
+            type: object
     CreateGroupAppointmentRequest:
       type: object
       required:
@@ -152,34 +164,6 @@ components:
                 $ref: '#/components/schemas/Appointment'
             appointmentsCount:
               type: integer
-    BookingResponse:
-      type: object
-      properties:
-        appointment:
-          $ref: '#/components/schemas/Appointment'
-    AppointmentResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            appointment:
-              $ref: '#/components/schemas/Appointment'
-        errors:
-          type: array
-          items:
-            type: object
-    Appointment:
-      type: object
-      properties:
-        id:
-          type: string
-        provider_id:
-          type: string
-        appointment_type_id:
-          type: string
-        datetime:
-          type: string
     CompleteBookingRequest:
       type: object
       required:
@@ -212,6 +196,22 @@ components:
         appointment_location_id:
           type: string
         video_chat_url:
+          type: string
+    BookingResponse:
+      type: object
+      properties:
+        appointment:
+          $ref: '#/components/schemas/Appointment'
+    Appointment:
+      type: object
+      properties:
+        id:
+          type: string
+        provider_id:
+          type: string
+        appointment_type_id:
+          type: string
+        datetime:
           type: string
   securitySchemes:
     bearerAuth:
