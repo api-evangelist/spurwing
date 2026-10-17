@@ -126,32 +126,6 @@ paths:
                 $ref: '#/components/schemas/AppointmentResponse'
 components:
   schemas:
-    AppointmentResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            appointment:
-              $ref: '#/components/schemas/Appointment'
-        errors:
-          type: array
-          items:
-            type: object
-    CreateGroupAppointmentRequest:
-      type: object
-      required:
-      - provider_id
-      - appointment_type_id
-      - datetime
-      properties:
-        provider_id:
-          type: string
-        appointment_type_id:
-          type: string
-        datetime:
-          type: string
-          description: Date and time of the group appointment.
     AppointmentsList:
       type: object
       properties:
@@ -197,11 +171,6 @@ components:
           type: string
         video_chat_url:
           type: string
-    BookingResponse:
-      type: object
-      properties:
-        appointment:
-          $ref: '#/components/schemas/Appointment'
     Appointment:
       type: object
       properties:
@@ -213,6 +182,37 @@ components:
           type: string
         datetime:
           type: string
+    CreateGroupAppointmentRequest:
+      type: object
+      required:
+      - provider_id
+      - appointment_type_id
+      - datetime
+      properties:
+        provider_id:
+          type: string
+        appointment_type_id:
+          type: string
+        datetime:
+          type: string
+          description: Date and time of the group appointment.
+    AppointmentResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            appointment:
+              $ref: '#/components/schemas/Appointment'
+        errors:
+          type: array
+          items:
+            type: object
+    BookingResponse:
+      type: object
+      properties:
+        appointment:
+          $ref: '#/components/schemas/Appointment'
   securitySchemes:
     bearerAuth:
       type: http

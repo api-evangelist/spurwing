@@ -104,12 +104,6 @@ paths:
                 $ref: '#/components/schemas/SlotsAvailable'
 components:
   schemas:
-    Slot:
-      type: object
-      properties:
-        date:
-          type: string
-          description: The date/time of the bookable slot.
     SlotsAvailable:
       type: object
       properties:
@@ -125,6 +119,12 @@ components:
           items:
             type: string
             description: A date on which the provider has availability.
+    Slot:
+      type: object
+      properties:
+        date:
+          type: string
+          description: The date/time of the bookable slot.
   securitySchemes:
     bearerAuth:
       type: http
